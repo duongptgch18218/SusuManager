@@ -1,0 +1,45 @@
+    <main>
+        <div class="container">
+        <form action="addProduct" method="POST">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputEmail4">Name Customer</label>
+                <input type="text" class="form-control" id="inputEmail4" name="name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword4">Telenumber</label>
+                <input type="tel" class="form-control" id="inputPassword4" placeholder="Optional" name="phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="Optional" name="address">
+            </div>
+            <div class="form-group ">
+              <label for="inputAddress2">Price(/kg) - VNĐ</label>
+              <input type="number" class="form-control" id="inputAddress2" placeholder="30.6" name="price">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">Amount - kg</label>
+                <input type="number" class="form-control" id="inputCity" name="amount">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">Paid</label>
+                <select id="inputState" class="form-control" name="paid">
+                  <option selected value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-2">
+                <label for="inputCity">Select date</label>
+                <input type="date" class="form-control" id="inputCity" name="date" min="2020-06-01">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        </div>     
+    </main>
+ 

@@ -1,0 +1,52 @@
+    <main>
+        <div style="position: relative; margin: 10px 50px 60px 50px;">
+        <div class="form-day">
+           <span> Select day:</span> <input type="date" name="date"  min="2020-06-01" max="2022-12-31" id="date">
+        </div>
+        <div class="total">
+            <table>
+                <tr>
+                    <td><strong>Total kg: 125kg</strong></td>
+                    <td> <strong>Total money paid: 200.000 VNĐ</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Total money: 3.000.000 VNĐ </strong></td>
+                    <td> <strong>Total money unpaid: 2.800.000 VNĐ</strong></td>
+                </tr>
+            </table>   
+        </div>
+        <div class="form-search">
+            <input type="search" name="search" placeholder="Input keyword" >
+            <button class="btn btn-success">Search</button>
+        </div>
+    </div>
+      <div class="option-table">
+          <h3></h3>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Customer</th>
+                <th scope="col">Amount(kg)</th>
+                <th scope="col">Price(/kg)-(VNĐ)</th>
+                <th scope="col">Total(VNĐ)</th>
+                <th scope="col">Paid</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="data-query">
+              {{#each product}}
+              <tr>
+                <th scope="row">{{this.name}}</th>
+                <td>{{this.amount}} Kg</td>
+                <td>{{this.price}} VNĐ</td>
+                <td>{{this.total}} VNĐ</td>
+                <td>{{this.paid}}</td>
+                <td>Update</td>
+                <td>Delete</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+    </main>
