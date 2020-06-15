@@ -21,7 +21,6 @@
         </div>
     </div>
       <div class="option-table">
-          <h3></h3>
         <table class="table">
             <thead class="thead-dark">
               <tr>
@@ -42,8 +41,8 @@
                 <td>{{this.price}} VNĐ</td>
                 <td>{{this.total}} VNĐ</td>
                 <td>{{this.paid}}</td>
-                <td>Update</td>
-                <td>Delete</td>
+                <td><a href="/import/update/{{this._id}}">Update</a></td>
+                <td><a href="#" class="delete" data-set ="a">Delete</a></td>
               </tr>
               {{/each}}
             </tbody>

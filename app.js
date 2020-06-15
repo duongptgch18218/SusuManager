@@ -23,12 +23,18 @@ app.set("view engine", "hbs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-const adminController = require(path.join(__dirname, "routes", "admin"));
-app.use("/", adminController);
+const mainPage = require(path.join(__dirname, "routes", "main"));
+app.use('/', mainPage);
+
+const importPage = require(path.join(__dirname, "routes", "import"));
+app.use('/import', importPage);
+
+// const exportPage = require(path.join(__dirname, "routes", "export"));
+// app.use("/export", exportPage);
 
 const getErrorPage = require(path.join(__dirname,"controller","error"));
 app.use(getErrorPage);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running ar port 3000");
 });
