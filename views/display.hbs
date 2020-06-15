@@ -6,12 +6,12 @@
         <div class="total">
             <table>
                 <tr>
-                    <td><strong>Total kg: 125kg</strong></td>
-                    <td> <strong>Total money paid: 200.000 VNĐ</strong></td>
+                    <td><strong id="totalKg">Total kg: {{totalKg}} Kg</strong></td>
+                    <td> <strong id="totalPaid">Total money paid: {{totalPaid}} VNĐ</strong></td>
                 </tr>
                 <tr>
-                    <td><strong>Total money: 3.000.000 VNĐ </strong></td>
-                    <td> <strong>Total money unpaid: 2.800.000 VNĐ</strong></td>
+                    <td><strong id="totalMoney">Total money: {{totalMoney}} VNĐ </strong></td>
+                    <td> <strong id="totalUnpaid">Total money unpaid: {{totalUnpaid}} VNĐ</strong></td>
                 </tr>
             </table>   
         </div>
@@ -42,7 +42,7 @@
                 <td>{{this.total}} VNĐ</td>
                 <td>{{this.paid}}</td>
                 <td><a href="/import/update/{{this._id}}">Update</a></td>
-                <td><a href="#" class="delete" data-set ="a">Delete</a></td>
+                <td><a href="#" class="delete" data-setname ="{{this.name}}" data-setid="{{this._id}}">Delete</a></td>
               </tr>
               {{/each}}
             </tbody>

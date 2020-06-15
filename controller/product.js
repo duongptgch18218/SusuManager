@@ -1,4 +1,5 @@
 const express = require("express");
+const { escapeExpression } = require("handlebars");
 const app = express();
 
 app.use(express.json());
@@ -21,7 +22,28 @@ exports.getDisplayPage = (req, res) => {
       .find(query)
       .toArray(function (err, result) {
         if (err) throw err;
-        res.render("display", { displayCSS: true, nav: true, product: result, check: result.length < 1 });
+        let totalKg = 0;
+        let totalPaid = 0;
+        let totalUnpaid = 0;
+        result.forEach((data) => {
+          totalKg += parseFloat(data.amount);
+          if (data.paid === "yes") {
+            totalPaid += data.total;
+          } else {
+            totalUnpaid += data.total;
+          }
+        });
+        let totalMoney = totalPaid + totalUnpaid;
+        res.render("display", {
+          displayCSS: true,
+          nav: true,
+          product: result,
+          check: result.length < 1,
+          totalKg: totalKg,
+          totalPaid: totalPaid,
+          totalUnpaid: totalUnpaid,
+          totalMoney: totalMoney,
+        });
         db.close();
       });
   });
@@ -71,7 +93,19 @@ exports.getDataByDate = (req, res) => {
       .find(query)
       .toArray(function (err, result) {
         if (err) throw err;
-        res.json({ result: result });
+        let totalKg = 0;
+        let totalPaid = 0;
+        let totalUnpaid = 0;
+        result.forEach((data) => {
+          totalKg += parseFloat(data.amount);
+          if (data.paid === "yes") {
+            totalPaid += data.total;
+          } else {
+            totalUnpaid += data.total;
+          }
+        });
+        let totalMoney = totalPaid + totalUnpaid;
+        res.json({ result: result, totalKg: totalKg, totalMoney: totalMoney, totalPaid: totalPaid, totalUnpaid:totalUnpaid});
         db.close();
       });
   });
@@ -125,7 +159,7 @@ exports.updateData = async (req, res) => {
     if (err) throw err;
     var dbo = db.db("SusuManager");
     const mongodb = require("mongodb");
-    var query = { '_id': new mongodb.ObjectID(id)};
+    var query = { _id: new mongodb.ObjectID(id) };
     dbo.collection("product").updateOne(query, newInfo, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
@@ -133,4 +167,23 @@ exports.updateData = async (req, res) => {
     });
   });
   res.redirect("/import");
+};
+
+exports.deleteData = (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("SusuManager");
+    const mongodb = require("mongodb");
+    var myquery = { _id: mongodb.ObjectID(id) };
+    dbo.collection("product").deleteOne(myquery, function (err, obj) {
+      if (err) {
+        res.json({ check: false });
+        throw err;
+      }
+      console.log("1 document deleted");
+      res.json({ check: true });
+    });
+  });
 };

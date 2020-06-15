@@ -17,5 +17,7 @@ router.get('/update/:id', controller.getUpdatePage);
 
 router.post('/update', controller.updateData);
 
+router.get('/delete/:id', controller.deleteData);
+
 
 module.exports = router;
