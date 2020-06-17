@@ -9,13 +9,13 @@ router.get('/add-product', controller.getAddProductPage);
 
 router.get('/', controller.getDisplayPage);
 
-router.post('/addProduct', controller.addProduct);
+router.post('/addProductImport', controller.addProductImport);
 
-router.get('/getByDate/:date', controller.getDataByDate);
+router.get('/getByDate', controller.getDataByDate);
 
 router.get('/update/:id', controller.getUpdatePage);
 
-router.post('/update', controller.updateData);
+router.post('/update', controller.updateDataImport);
 
 router.get('/delete/:id', controller.deleteData);
 

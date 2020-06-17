@@ -29,8 +29,8 @@ app.use('/', mainPage);
 const importPage = require(path.join(__dirname, "routes", "import"));
 app.use('/import', importPage);
 
-// const exportPage = require(path.join(__dirname, "routes", "export"));
-// app.use("/export", exportPage);
+const exportPage = require(path.join(__dirname, "routes", "export"));
+app.use("/export", exportPage);
 
 const getErrorPage = require(path.join(__dirname,"controller","error"));
 app.use(getErrorPage);

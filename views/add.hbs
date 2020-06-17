@@ -1,6 +1,6 @@
     <main>
         <div class="container">
-        <form action="addProduct" method="POST">
+        <form {{#if routerImport }}action="addProductImport"{{/if}}{{#if routerExport }}action="addProductExport"{{/if}} method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Name Customer</label>

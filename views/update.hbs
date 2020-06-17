@@ -1,7 +1,7 @@
     <main>
       <h2 style="text-align: center;">Update Page</h2>
         <div class="container">
-        <form action="/import/update" method="POST">
+        <form {{#if routerImport}}action="/import/update"{{/if}}{{#if routerExport}}action="/export/update"{{/if}} method="POST">
           {{#each data}}
             <div class="form-row">
               <div class="form-group col-md-5">
