@@ -8,6 +8,8 @@ const engines = require("express-handlebars");
 
 const bodyParser = require("body-parser");
 
+const session = require("express-session");
+
 app.engine(
   "hbs",
   engines({
@@ -19,6 +21,15 @@ app.engine(
 
 app.set("views", "./views");
 app.set("view engine", "hbs");
+
+app.use(session({
+  secret: "my secret",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: 600000
+}
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -33,7 +44,9 @@ const exportPage = require(path.join(__dirname, "routes", "export"));
 app.use("/export", exportPage);
 
 const getErrorPage = require(path.join(__dirname,"controller","error"));
-app.use(getErrorPage);
+app.use('/404',getErrorPage.errorPage);
+app.use('/301', getErrorPage.alertPage);
+
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server is running ar port 3000");

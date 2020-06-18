@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-
+const session = require('express-session');
 app.use(express.json());
 
 const MongoClient = require("mongodb").MongoClient;
@@ -33,10 +33,6 @@ exports.getDisplayPage = (req, res) => {
       "/export/display"
     );
   }
-};
-
-exports.getLoginPage = (req, res) => {
-  res.render("login");
 };
 
 exports.getAddProductPage = (req, res) => {
