@@ -298,3 +298,4 @@ function getDateAddProduct(req) {
   };
   return newProduct;
 }
+

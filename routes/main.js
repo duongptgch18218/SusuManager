@@ -1,10 +1,10 @@
 const express = require("express");
 const controller = require("../controller/product");
-
+const auth = require("../controller/auth");
 
 const router = express.Router();
 
-// router.get("/login", auth.getLoginPage);
+router.get("/login", auth.getLoginPage);
 
 // router.post("/dologin", auth.doLogin);
 
