@@ -10,6 +10,8 @@ const bodyParser = require("body-parser");
 
 const session = require("express-session");
 
+const checkLogin = require("./middleware/auth.midleware");
+
 app.engine(
   "hbs",
   engines({
@@ -26,9 +28,6 @@ app.use(session({
   secret: "my secret",
   resave: false,
   saveUninitialized: false,
-  cookie: {
-    expires: 600000
-}
 }));
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,10 +37,10 @@ const mainPage = require(path.join(__dirname, "routes", "main"));
 app.use('/', mainPage);
 
 const importPage = require(path.join(__dirname, "routes", "import"));
-app.use('/import', importPage);
+app.use('/import',checkLogin.requestAuth, importPage);
 
 const exportPage = require(path.join(__dirname, "routes", "export"));
-app.use("/export", exportPage);
+app.use("/export", checkLogin.requestAuth, exportPage);
 
 const getErrorPage = require(path.join(__dirname,"controller","error"));
 app.use('/404',getErrorPage.errorPage);
