@@ -6,7 +6,7 @@
     <div class="total">
       <table>
         <tr>
-          <td><strong id="totalKg">Total kg: {{totalKg}} Kg</strong></td>
+          <td><strong id="totalKg">Total bill: {{bill}} Bill</strong></td>
           <td> <strong id="totalPaid">Total money paid: {{totalPaid}} VNĐ</strong></td>
         </tr>
         <tr>
@@ -25,8 +25,9 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Customer</th>
-          <th scope="col">Amount(kg)</th>
-          <th scope="col">Price(/kg)-(VNĐ)</th>
+          <th scope="col">Toy Code</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Price-(VNĐ)</th>
           <th scope="col">Total(VNĐ)</th>
           <th scope="col">Paid</th>
           <th scope="col">Update</th>
@@ -38,7 +39,8 @@
         {{#each product}}
         <tr>
           <th scope="row">{{this.name}}</th>
-          <td>{{this.amount}} Kg</td>
+           <td>{{this.address}}</td>
+          <td>{{this.amount}}</td>
           <td>{{this.price}} VNĐ</td>
           <td>{{this.total}} VNĐ</td>
           <td>{{this.paid}}</td>
@@ -51,7 +53,8 @@
         {{#each product}}
         <tr>
           <th scope="row">{{this.name}}</th>
-          <td>{{this.amount}} Kg</td>
+           <td>{{this.address}}</td>
+          <td>{{this.amount}}</td>
           <td>{{this.price}} VNĐ</td>
           <td>{{this.total}} VNĐ</td>
           <td>{{this.paid}}</td>

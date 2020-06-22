@@ -29,7 +29,7 @@ function changeData(path) {
       const datas = JSON.parse(this.responseText);
       let blockCode = "";
       document.querySelector("#totalKg").innerHTML =
-        "Total kg: " + datas.totalKg + " Kg";
+        "Total: " + datas.bill + " Bill";
       document.querySelector("#totalMoney").innerHTML =
         "Total Money: " + datas.totalMoney + " VNĐ";
       document.querySelector("#totalPaid").innerHTML =
@@ -43,8 +43,10 @@ function changeData(path) {
             "<tr><th scope='row'>" +
             data.name +
             "</th><td>" +
+            data.address +
+            "</th><td>" +
             data.amount +
-            " Kg</td><td>" +
+            "</td><td>" +
             data.price +
             " VNĐ</td><td>" +
             data.total +

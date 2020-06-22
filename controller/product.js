@@ -78,11 +78,11 @@ exports.getDataByDate = (req, res) => {
       .find(query)
       .toArray(function (err, result) {
         if (err) throw err;
-        let totalKg = 0;
+        let bill = 0;
         let totalPaid = 0;
         let totalUnpaid = 0;
         result.forEach((data) => {
-          totalKg += parseFloat(data.amount);
+          bill++;
           if (data.paid === "yes") {
             totalPaid += data.total;
           } else {
@@ -92,7 +92,7 @@ exports.getDataByDate = (req, res) => {
         let totalMoney = totalPaid + totalUnpaid;
         res.json({
           result: result,
-          totalKg: totalKg,
+          bill: bill,
           totalMoney: totalMoney,
           totalPaid: totalPaid,
           totalUnpaid: totalUnpaid,
@@ -223,11 +223,11 @@ function getDisplayPage(
       .find(query)
       .toArray(function (err, result) {
         if (err) throw err;
-        let totalKg = 0;
+        let bill = 0;
         let totalPaid = 0;
         let totalUnpaid = 0;
         result.forEach((data) => {
-          totalKg += parseFloat(data.amount);
+          bill ++;
           if (data.paid === "yes") {
             totalPaid += data.total;
           } else {
@@ -243,7 +243,7 @@ function getDisplayPage(
           nav: true,
           product: result,
           check: result.length < 1,
-          totalKg: totalKg,
+          bill: bill,
           totalPaid: totalPaid,
           totalUnpaid: totalUnpaid,
           totalMoney: totalMoney,
