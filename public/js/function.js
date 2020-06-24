@@ -1,4 +1,4 @@
-var utc = new Date().toJSON().slice(0, 10);
+var utc = new Date().toJSON().slice(0, 10); // lấy ngày tháng năm hiện tại 
 
 document.addEventListener("DOMContentLoaded", () => {
   const date = document.querySelector("#date");
